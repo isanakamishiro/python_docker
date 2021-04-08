@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: python-exp
+    build:
+      context: .
+      # Remote Containerが立ち上がるまで待機
+      dockerfile: docker/Dockerfile
+    ports:
+      - 9000:9000
+      - 8080:8080
+    volumes:
+      - .:/home/vscode/app:cached
+    command: /bin/bash -c "while sleep 1000; do :; done"
